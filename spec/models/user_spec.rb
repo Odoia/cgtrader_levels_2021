@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe CgtraderLevels::User do
-  context 'new user' do
+  xcontext 'new user' do
     it 'has 0 reputation points' do
       user = CgtraderLevels::User.new
       expect(user.reputation).to eq(0)
@@ -15,7 +15,7 @@ describe CgtraderLevels::User do
     end
   end
 
-  context 'level up' do
+  xcontext 'level up' do
     it "level ups from 'First level' to 'Second level'" do
       level_1 = CgtraderLevels::Level.create!(experience: 0, title: 'First level')
       level_2 = CgtraderLevels::Level.create!(experience: 10, title: 'Second level')
@@ -31,23 +31,36 @@ describe CgtraderLevels::User do
       level_3 = CgtraderLevels::Level.create!(experience: 13, title: 'Third level')
       user = CgtraderLevels::User.create!
 
+      require 'pry'; binding.pry
       expect {
+        require 'pry'; binding.pry
         user.update_attribute(:reputation, 13)
       }.to change { user.reload.level }.from(level_1).to(level_3)
     end
   end
 
-  describe 'level up bonuses & privileges' do
+  context 'level up bonuses & privileges' do
     it 'gives 7 coins to user' do
-      pending
+      CgtraderLevels::Level.create!(experience: 0, title: 'First level')
+      CgtraderLevels::Level.create!(experience: 10, title: 'Second level')
 
-      @user = CgtraderLevels::User.create!(coins: 1)
+      user = CgtraderLevels::User.create!(coins: 1)
 
       expect {
-        @user.update_attribute(:reputation, 10)
-      }.to change { @user.reload.coins }.from(1).to(8)
+        user.update_attribute(:reputation, 10)
+      }.to change { user.coins }.from(1).to(8)
     end
 
-    it 'reduces tax rate by 1'
+    it 'reduces tax rate by 1'do
+      CgtraderLevels::Level.create!(experience: 0, title: 'First level')
+      CgtraderLevels::Level.create!(experience: 10, title: 'Second level')
+
+      user = CgtraderLevels::User.create!(coins: 1)
+      require 'pry'; binding.pry
+
+      expect {
+        user.update_attribute(:reputation, 10)
+      }.to change { user.coins }.from(1).to(8)
+    end
   end
 end
