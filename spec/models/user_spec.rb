@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 describe CgtraderLevels::User do
   describe 'new user' do
     it 'has 0 reputation points' do
