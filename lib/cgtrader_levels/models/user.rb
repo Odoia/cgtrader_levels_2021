@@ -1,27 +1,63 @@
-class CgtraderLevels::User < ActiveRecord::Base
-  attr_reader :level
+module CgtraderLevels
+  class User < ActiveRecord::Base
+    attr_reader :level, :coin_reward_by_reputation_hash, :tax_reduce_by_reputation_hash
 
-  after_initialize do
-    self.reputation = 0
+    after_initialize do
+      self.reputation = 0
 
-    matching_level = CgtraderLevels::Level.where(experience: reputation).first
+      matching_level = CgtraderLevels::Level.find_by(experience: reputation)
 
-    if matching_level
+      if matching_level
+        self.level_id = matching_level.id
+        @level = matching_level
+      end
+    end
+
+    after_update :set_new_level
+
+    private
+
+    def set_new_level
+      matching_level = CgtraderLevels::Level.find_by(experience: reputation)
+
+      return unless matching_level
+
+      update_privileges if level.experience < reputation
+
       self.level_id = matching_level.id
       @level = matching_level
     end
-  end
 
-  after_update :set_new_level
+    def update_privileges
+      coins_reward
+      tax_reduce
+    end
 
-  private
+    def coins_reward
+      return unless coin_reward_by_reputation_hash[reputation]
 
-  def set_new_level
-    matching_level = CgtraderLevels::Level.where(experience: reputation).first
+      self.coins += coin_reward_by_reputation_hash[reputation]
+    end
 
-    if matching_level
-      self.level_id = matching_level.id
-      @level = matching_level
+    def coin_reward_by_reputation_hash
+      @coin_reward_by_reputation_hash ||= {
+        10 => 7
+      }
+    end
+
+    def tax_reduce
+      return unless tax_reduce_by_reputation_hash[reputation]
+
+      reduce_tax = tax_reduce_by_reputation_hash[reputation]
+      result = ((1 - reduce_tax) * tax)
+
+      self.tax = result.to_f
+    end
+
+    def tax_reduce_by_reputation_hash
+      @tax_reduce_by_reputation_hash ||= {
+        10 => 0.01
+      }
     end
   end
 end
