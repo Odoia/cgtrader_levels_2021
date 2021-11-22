@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2021-11-21T20:37:25-03:00">2021-11-21T20:37:25-03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2021-11-21T21:23:55-03:00">2021-11-21T21:23:55-03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  92.59%
+  100.0%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         123.63
+         3.49
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>27</b> relevant lines,
-    <span class="green"><b>25</b> lines covered</span> and
-    <span class="red"><b>2</b> lines missed. </span>
+    <b>37</b> relevant lines,
+    <span class="green"><b>37</b> lines covered</span> and
+    <span class="red"><b>0</b> lines missed. </span>
     (<span class="green">
-  92.59%
+  100.0%
 </span>
 )
   </div>
@@ -94,12 +94,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#a58ab1f36401b17a38bab1adedcc3e325e129596" class="src_link" title="lib/cgtrader_levels/models/user.rb">lib/cgtrader_levels/models/user.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">90.91 %</td>
-            <td class="cell--number">42</td>
-            <td class="cell--number">22</td>
-            <td class="cell--number">20</td>
-            <td class="cell--number">2</td>
-            <td class="cell--number">151.50</td>
+            <td class="green strong cell--number t-file__coverage">100.00 %</td>
+            <td class="cell--number">63</td>
+            <td class="cell--number">32</td>
+            <td class="cell--number">32</td>
+            <td class="cell--number">0</td>
+            <td class="cell--number">3.88</td>
             
           </tr>
         
@@ -275,7 +275,7 @@
     <h3>lib/cgtrader_levels/models/user.rb</h3>
     <h4>
       <span class="green">
-  90.91%
+  100.0%
 </span>
 
       lines covered
@@ -284,9 +284,9 @@
     
 
     <div class="t-line-summary">
-      <b>22</b> relevant lines.
-      <span class="green"><b>20</b> lines covered</span> and
-      <span class="red"><b>2</b> lines missed.</span>
+      <b>32</b> relevant lines.
+      <span class="green"><b>32</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
     </div>
 
     
@@ -303,7 +303,7 @@
 
             
 
-            <code class="ruby">class CgtraderLevels::User &lt; ActiveRecord::Base</code>
+            <code class="ruby">module CgtraderLevels</code>
           </li>
         </div>
       
@@ -314,29 +314,29 @@
 
             
 
-            <code class="ruby">  attr_reader :level</code>
+            <code class="ruby">  class User &lt; ActiveRecord::Base</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="3">
+          <li class="covered" data-hits="1" data-linenumber="3">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    attr_reader :level, :coin_reward_by_reputation_hash, :tax_reduce_by_reputation_hash</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="4">
             
             
 
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="4">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  after_initialize do</code>
           </li>
         </div>
       
@@ -347,12 +347,23 @@
 
             
 
-            <code class="ruby">    self.reputation = 0</code>
+            <code class="ruby">    after_initialize do</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="6">
+          <li class="covered" data-hits="10" data-linenumber="6">
+            <span class="hits">10</span>
+            
+
+            
+
+            <code class="ruby">      self.reputation = 0</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="7">
             
             
 
@@ -363,18 +374,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="7">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="10" data-linenumber="8">
+            <span class="hits">10</span>
             
 
             
 
-            <code class="ruby">    matching_level = CgtraderLevels::Level.find_by(experience: reputation)</code>
+            <code class="ruby">      matching_level = CgtraderLevels::Level.find_by(experience: reputation)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="8">
+          <li class="never" data-hits="" data-linenumber="9">
             
             
 
@@ -385,46 +396,35 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="9">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="10" data-linenumber="10">
+            <span class="hits">10</span>
             
 
             
 
-            <code class="ruby">    if matching_level</code>
+            <code class="ruby">      if matching_level</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="10">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="10" data-linenumber="11">
+            <span class="hits">10</span>
             
 
             
 
-            <code class="ruby">      self.level_id = matching_level.id</code>
+            <code class="ruby">        self.level_id = matching_level.id</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="11">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="10" data-linenumber="12">
+            <span class="hits">10</span>
             
 
             
 
-            <code class="ruby">      @level = matching_level</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="12">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
+            <code class="ruby">        @level = matching_level</code>
           </li>
         </div>
       
@@ -435,7 +435,7 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">      end</code>
           </li>
         </div>
       
@@ -446,23 +446,34 @@
 
             
 
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="15">
+            
+            
+
+            
+
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="15">
+          <li class="covered" data-hits="1" data-linenumber="16">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  after_update :set_new_level</code>
+            <code class="ruby">    after_update :set_new_level</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="16">
+          <li class="never" data-hits="" data-linenumber="17">
             
             
 
@@ -473,18 +484,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="17">
+          <li class="covered" data-hits="1" data-linenumber="18">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  private</code>
+            <code class="ruby">    private</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="18">
+          <li class="never" data-hits="" data-linenumber="19">
             
             
 
@@ -495,29 +506,29 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="19">
+          <li class="covered" data-hits="1" data-linenumber="20">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def set_new_level</code>
+            <code class="ruby">    def set_new_level</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="415" data-linenumber="20">
-            <span class="hits">415</span>
+          <li class="covered" data-hits="4" data-linenumber="21">
+            <span class="hits">4</span>
             
 
             
 
-            <code class="ruby">    matching_level = CgtraderLevels::Level.find_by(experience: reputation)</code>
+            <code class="ruby">      matching_level = CgtraderLevels::Level.find_by(experience: reputation)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="21">
+          <li class="never" data-hits="" data-linenumber="22">
             
             
 
@@ -528,24 +539,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="415" data-linenumber="22">
-            <span class="hits">415</span>
+          <li class="covered" data-hits="4" data-linenumber="23">
+            <span class="hits">4</span>
             
 
             
 
-            <code class="ruby">    if matching_level</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="415" data-linenumber="23">
-            <span class="hits">415</span>
-            
-
-            
-
-            <code class="ruby">      set_coins if self.level.experience &lt; reputation</code>
+            <code class="ruby">      return unless matching_level</code>
           </li>
         </div>
       
@@ -561,8 +561,30 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="25">
+          <li class="covered" data-hits="4" data-linenumber="25">
+            <span class="hits">4</span>
             
+
+            
+
+            <code class="ruby">      update_privileges if level.experience &lt; reputation</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="26">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="27">
+            <span class="hits">4</span>
             
 
             
@@ -572,35 +594,13 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="26">
-            
+          <li class="covered" data-hits="4" data-linenumber="28">
+            <span class="hits">4</span>
             
 
             
 
             <code class="ruby">      @level = matching_level</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="27">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="28">
-            
-            
-
-            
-
-            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -611,62 +611,62 @@
 
             
 
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="30">
+            
+            
+
+            
+
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="30">
+          <li class="covered" data-hits="1" data-linenumber="31">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def set_coins</code>
+            <code class="ruby">    def update_privileges</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="415" data-linenumber="31">
-            <span class="hits">415</span>
+          <li class="covered" data-hits="4" data-linenumber="32">
+            <span class="hits">4</span>
             
 
             
 
-            <code class="ruby">    return unless coin_reward_by_reputation[reputation]</code>
+            <code class="ruby">      coins_reward</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="32">
-            
-            
-
+          <li class="covered" data-hits="4" data-linenumber="33">
+            <span class="hits">4</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">      tax_reduce</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="415" data-linenumber="33">
-            <span class="hits">415</span>
+          <li class="never" data-hits="" data-linenumber="34">
+            
             
 
             
 
-            <code class="ruby">    self.coins += coin_reward_by_reputation[reputation]</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="415" data-linenumber="34">
-            <span class="hits">415</span>
-            
-
-            
-
-            <code class="ruby">    self.save</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -677,12 +677,34 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="36">
+          <li class="covered" data-hits="1" data-linenumber="36">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def coins_reward</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="37">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">      return unless coin_reward_by_reputation_hash[reputation]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="38">
             
             
 
@@ -693,35 +715,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="37">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="3" data-linenumber="39">
+            <span class="hits">3</span>
             
 
             
 
-            <code class="ruby">  def coin_reward_by_reputation</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="830" data-linenumber="38">
-            <span class="hits">830</span>
-            
-
-            
-
-            <code class="ruby">    {</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="39">
-            
-            
-
-            
-
-            <code class="ruby">      10 =&gt; 7</code>
+            <code class="ruby">      self.coins += coin_reward_by_reputation_hash[reputation]</code>
           </li>
         </div>
       
@@ -732,7 +732,7 @@
 
             
 
-            <code class="ruby">    }</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -743,12 +743,243 @@
 
             
 
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="42">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def coin_reward_by_reputation_hash</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="7" data-linenumber="43">
+            <span class="hits">7</span>
+            
+
+            
+
+            <code class="ruby">      @coin_reward_by_reputation_hash ||= {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="44">
+            
+            
+
+            
+
+            <code class="ruby">        10 =&gt; 7</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="45">
+            
+            
+
+            
+
+            <code class="ruby">      }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="46">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="47">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="48">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def tax_reduce</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="49">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">      return unless tax_reduce_by_reputation_hash[reputation]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="50">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="3" data-linenumber="51">
+            <span class="hits">3</span>
+            
+
+            
+
+            <code class="ruby">      reduce_tax = tax_reduce_by_reputation_hash[reputation]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="3" data-linenumber="52">
+            <span class="hits">3</span>
+            
+
+            
+
+            <code class="ruby">      result = ((1 - reduce_tax) * tax)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="53">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="3" data-linenumber="54">
+            <span class="hits">3</span>
+            
+
+            
+
+            <code class="ruby">      self.tax = result.to_f</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="55">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="56">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="57">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def tax_reduce_by_reputation_hash</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="7" data-linenumber="58">
+            <span class="hits">7</span>
+            
+
+            
+
+            <code class="ruby">      @tax_reduce_by_reputation_hash ||= {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="59">
+            
+            
+
+            
+
+            <code class="ruby">        10 =&gt; 0.01</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="60">
+            
+            
+
+            
+
+            <code class="ruby">      }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="61">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="62">
+            
+            
+
+            
+
             <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="42">
+          <li class="never" data-hits="" data-linenumber="63">
             
             
 
