@@ -43,21 +43,49 @@ describe CgtraderLevels::User, type: :model do
   end
 
   context 'level up bonuses & privileges' do
-    before do
-      level1
-      level2
+    context 'when user increase reputation' do
+      before do
+        level1
+        level2
+      end
+
+      it 'must gives 7 coins to user' do
+        user = CgtraderLevels::User.create!(coins: 1)
+
+        expect { user.update_attribute(:reputation, 10) }
+          .to change { user.coins }.from(1).to(8)
+      end
+
+      it 'must reduces tax rate by 1' do
+        expect { user.update_attribute(:reputation, 10) }
+          .to change { user.tax }.from(30).to(29.7)
+      end
+
+      context 'when the reputation has no bonus' do
+        it 'number of coins must not be changed' do
+          expect { user.update_attribute(:reputation, 13) }
+            .to_not change { user.coins }
+        end
+
+        it 'tax rate must not be changed' do
+          expect { user.update_attribute(:reputation, 13) }
+            .to_not change { user.tax }
+        end
+      end
     end
 
-    it 'gives 7 coins to user' do
-      user = CgtraderLevels::User.create!(coins: 1)
+    context 'when user reduce reputation' do
+      it 'number of coins must not be changed' do
+        user = CgtraderLevels::User.create!(reputation: 3)
+        expect { user.update_attribute(:reputation, 0) }
+          .to_not change { user.coins }
+      end
 
-      expect { user.update_attribute(:reputation, 10) }
-        .to change { user.coins }.from(1).to(8)
-    end
-
-    it 'reduces tax rate by 1' do
-      expect { user.update_attribute(:reputation, 10) }
-        .to change { user.tax }.from(30).to(29.7)
+      it 'tax rate must not be changed' do
+        user = CgtraderLevels::User.create!(reputation: 3)
+        expect { user.update_attribute(:reputation, 0) }
+          .to_not change { user.tax }
+      end
     end
   end
 end
